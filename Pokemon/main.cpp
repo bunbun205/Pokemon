@@ -1,58 +1,60 @@
 #include <iostream>
 #include <string>
 
+enum class PokemonChoice {
+    Ivysaur,
+    Charmeleon,
+    Jigglypuff,
+    InvalidChoice
+};
+
 int main() {
     std::string playerName;
 
-    std::cout << "Professor Oak: Hello there! Welcome to the world of Pokemon!\n";
-    std::cout << "Professor Oak: My name is Oak. People call me the Pokemon "
-                 "Professor!\n";
-    std::cout << "Professor Oak: But enough about me. Let's talk about you!\n";
-
-    std::cout << "Professor Oak: First, tell me, what’s your name?\n";
+    std::cout << "Professor Oak: Hello there, young Trainer! Welcome to the world of Pokémon!\n";
+    std::cout << "Professor Oak: First, tell me your name: ";
     std::cin >> playerName;
 
-    std::cout << "Professor Oak: Ah, " << playerName
-              << "! What a fantastic name!\n";
-    std::cout << "Professor Oak: You must be eager to start your adventure. But "
-                 "first, you’ll need a Pokemon of your own!\n";
+    std::cout << "Professor Oak: Ah, " << playerName << "! What a fantastic name!\n";
+    std::cout << "Professor Oak: Now, you must choose your first Pokémon!\n\n";
 
-    std::cout << "Professor Oak: I have three Pokemon here with me. They’re all "
-                 "quite feisty!\n";
-    std::cout << "Professor Oak: Choose wisely...\n";
-    std::cout << "1. Ivysaur - The grass/poison type. Balanced and strategic!\n";
-    std::cout << "2. Charmeleon - The fire type. Bold and fiery!\n";
-    std::cout << "3. Jigglypuff - The normal/fairy type. Cute and charming!\n";
+    std::cout << "Professor Oak: Here are your choices:\n";
+    std::cout << "1. Ivysaur - The grass type. Wise and balanced! 🍃\n";
+    std::cout << "2. Charmeleon - The fire type. Bold and fiery! 🔥\n";
+    std::cout << "3. Jigglypuff - The normal/fairy type. Cute and charming! 🎵\n";
+    std::cout << "Enter the number corresponding to your choice: ";
 
-    int choice;
-    std::string chosenPokemon;
-    std::cin >> choice;
-    std::cout << std::endl;
+    int input;
+    std::cin >> input;
 
-    switch (choice) {
-    case 1:
-        std::cout << "You chose Ivysaur! A balanced and powerful choice, perfect for a strategic trainer.\n";
-        chosenPokemon = "Ivysaur";
-        break;
-    case 2:
-        std::cout << "You chose Charmeleon! A fiery and bold choice, ready to blaze through battles.\n";
-        chosenPokemon = "Charmeleon";
-        break;
-    case 3:
-        std::cout << "You chose Jigglypuff! A cute and charming choice, with a voice that can lull opponents to sleep.\n";
-        chosenPokemon = "Jigglypuff";
-        break;
-    default:
-        std::cout << "Hmm, that doesn't seem right. Let me choose for you...\n";
-        chosenPokemon = "Pikachu";
-        std::cout << "Just kidding! Let's go with Pikachu, the surprise guest!\n";
-        break;
+    PokemonChoice chosen_pokemon = PokemonChoice::InvalidChoice;
+
+    switch (input) {
+        case 1: chosen_pokemon = PokemonChoice::Ivysaur; break;
+        case 2: chosen_pokemon = PokemonChoice::Charmeleon; break;
+        case 3: chosen_pokemon = PokemonChoice::Jigglypuff; break;
+        default:
+            std::cout << "\nHmm, that’s not a valid choice. Don’t worry, I’ll pick one for you!\n";
+            chosen_pokemon = PokemonChoice::Ivysaur;
+            break;
     }
 
-    std::cout << "\nNow, young Trainer, \n";
-    std::cout << "let’s see if you can make this code flawless.\n";
-    std::cout << "Switch statements are the way of the future!\n";
+    std::cout << "\nProfessor Oak: That’s it, young Trainer!\n";
+    std::cout << "You’ve made your choice: ";
+    switch (chosen_pokemon) {
+        case PokemonChoice::Ivysaur:
+            std::cout << "Ivysaur! A wise and balanced companion! 🍃\n"; break;
+        case PokemonChoice::Charmeleon:
+            std::cout << "Charmeleon! A bold and fiery partner! 🔥\n"; break;
+        case PokemonChoice::Jigglypuff:
+            std::cout << "Jigglypuff! A cute and charming ally! 🎵\n"; break;
+        default:
+            std::cout << "Unknown Pokémon? That should never happen!\n"; break;
+    }
+
+    std::cout << "\nProfessor Oak: Now, take your first step into the vast world of Pokémon...\n";
+    std::cout << "Who knows what mysteries await you?\n";
+    std::cout << "Good luck, " << playerName << "! Your adventure begins now!\n";
 
     return 0;
 }
-
